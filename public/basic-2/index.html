@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chaplin Basic Application</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="js/lib/require.js" data-main="js/config"></script>
+
+
+
+<script>
+
+/* requirejs.config({
+	paths : {
+		jquery : 'lib/jquery',
+		underscore : 'lib/lodash',
+		backbone : 'lib/backbone',
+		handlebars : 'lib/handlebars',
+		text : 'lib/text',
+		chaplin : 'lib/chaplin',
+	},
+	shim : {
+		underscore : {
+			exports : '_'
+		},
+		backbone : {
+			deps : [ 'underscore', 'jquery' ],
+			exports : 'Backbone'
+		},
+		handlebars : {
+			exports : 'Handlebars'
+		}
+	}
+});
+
+  // Bootstrap the application
+  require(['application', 'routes'], function(Application, routes) {
+    	new Application({routes: routes, controllerSuffix: '-controller','root':'/chaplin/basic-2/'});
+  }); */
+  requirejs.config({
+	     // The path where your JavaScripts are located
+	     baseUrl: '/js/chaplin/js/',
+	     // Specify the paths of vendor libraries
+	     paths: {
+	       jquery: '../bower_components/jquery/jquery',
+	       underscore: '../bower_components/lodash/dist/lodash',
+	       backbone: '../bower_components/backbone/backbone',
+	       handlebars: '../bower_components/handlebars/handlebars',
+	       text: '../bower_components/requirejs-text/text',
+	       chaplin: '../bower_components/chaplin/chaplin'
+	     },
+	     // Underscore and Backbone are not AMD-capable per default,
+	     // so we need to use the AMD wrapping of RequireJS
+	     shim: {
+	       underscore: {
+	         exports: '_'
+	       },
+	       backbone: {
+	         deps: ['underscore', 'jquery'],
+	         exports: 'Backbone'
+	       },
+	       handlebars: {
+	           exports: 'Handlebars'
+	         }
+	       }
+	       // For easier development, disable browser caching
+	       // Of course, this should be removed in a production environment
+	       //, urlArgs: 'bust=' +  (new Date()).getTime()
+	     });
+	   
+	     // Bootstrap the application
+	     require(['application', 'routes'], function(Application, routes) {
+	        new Application({routes: routes, controllerSuffix: '-controller',root:'/js/chaplin/'});
+	     });
+  </script>
+</head>
+<body></body>
+</html>
