@@ -5,10 +5,11 @@ define(['views/base/view', 'text!templates/site.html'], function(View, template)
     container: 'body',
     id: 'site-container',
     regions: {
-    	 main1: '#main-container',
-//    	 main1: '#main-container1'
+    	friends: '#friends-container',
+    	messageForm: '#message-form-container',
+    	message: '#message-container'
     },
-    template: template
+    template: template,
   });
 
   return SiteView;

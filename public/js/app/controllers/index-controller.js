@@ -1,17 +1,16 @@
 /**
  * 
  */
- define(['controllers/base/controller'], function(Controller) {
+ define(['controllers/base/controller','models/user', 'views/user'], function(Controller, UserModel, UserView) {
 
     'use strict';
 var IndexController = Controller.extend({	
-	index1: function(params) {
-		console.log('index function');
-		/*this.model = new HelloWorld();
-		this.view = new HelloWorldView({
+	index: function(params) {
+		this.model = new UserModel();
+		this.view = new UserView({
 			model: this.model,
-			region: 'main1',
-		});*/
+			region: 'friends',
+		});
     }, 
 });
 

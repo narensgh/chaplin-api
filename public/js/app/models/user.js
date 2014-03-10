@@ -4,7 +4,18 @@ define([
   'use strict';
 
   var User = Model.extend({
-    // This model is intentionally left blank
+	  url : "http://localhost/chaplin-api/api/user",
+	  initialize: function(){
+		  Model.prototype.initialize.apply(this, arguments);
+		  var users = this.fetchUsers();
+			this.attributes.users = users;
+	  },
+	  fetchUsers: function(){
+			var users = this.fetch({
+					async:false,
+				});
+			return users.responseJSON;
+		}
   });
 
   return User;
