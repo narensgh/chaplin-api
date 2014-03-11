@@ -32,6 +32,20 @@ class Message
 			return $ex;
 		}
 	}
+	
+	public function getMessage($userId)
+	{
+		try{
+		$qb = $this->_em->createQueryBuilder();
+		$qb->select('m')
+		->from('Api\Model\Entity\Messages','m')
+		->where('m.fromId = :userId')
+		->setParameter('userId', $userId);
+		return $qb->getQuery()->getArrayResult();
+		}catch(Exception $ex){
+			print_r($ex);
+		}
+	}
 
 }
 

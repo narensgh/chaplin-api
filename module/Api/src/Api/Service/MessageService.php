@@ -22,6 +22,12 @@ class MessageService
 		$messageId = $this->_message->saveMessage(null, $message);
 		return $messageId;
 	}
+	
+	public function getMessage($userId)
+	{
+		$messages = $this->_message->getMessage($userId);
+		return $messages;
+	}
 
 }
 

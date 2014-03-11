@@ -31,6 +31,36 @@ class MessageController extends AbstractRestfulController
 	}
 	
 	/**
+	 * Return single resource
+	 *
+	 * @param  mixed $id
+	 * @return mixed
+	 */
+	public function get($id)
+	{
+		die('get');
+		$this->response->setStatusCode(405);
+	
+		return array(
+				'content' => 'Method Not Allowed'
+		);
+	}
+	
+	/**
+	 * Return list of resources
+	 *
+	 * @return mixed
+	 */
+	public function getList()
+	{
+		$userId = $this->params()->fromQuery('userId',null);
+		$messageService = new MessageService($this->getEntityManager());
+		$messages = $messageService->getMessage($userId);
+		$this->response->setStatusCode(200);
+		return new JsonModel($messages);
+	}
+	
+	/**
 	 * Create a new resource
 	 *
 	 * @param  mixed $data
@@ -46,7 +76,6 @@ class MessageController extends AbstractRestfulController
 				'messageId' => $messageId
 		));
 	}
-
 }
 
 ?>

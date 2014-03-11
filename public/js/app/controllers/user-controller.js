@@ -2,20 +2,30 @@
  * 
  */
 
- define(['controllers/base/controller','models/user', 'views/user', 'views/messageForm'], function(Controller, UserModel, UserView, MessageForm) {
+ define(['controllers/base/controller','models/user', 'models/message', 'views/user', 'views/messageForm', 'views/message-view'], function(Controller, UserModel, MessageModel, UserView, MessageForm, MessageView) {
 
     'use strict';
 var UserController = Controller.extend({	
 	wall: function(params) {
-		this.model = new UserModel();
+		var userModel = new UserModel();
 		this.view = new UserView({
-			model: this.model,
+			model: userModel,
 			region: 'friends',
 		});
 		this.view = new MessageForm({
 			region: 'messageForm',
 		});
-		this.view = new Messages({
+		var messageModel = new MessageModel();
+		var messageData = messageModel.fetch({
+				async:false,
+				data: {
+					'userId': 12
+				},
+			});
+		messageModel.attributes.messages = messageData.responseJSON;
+		console.log(messageModel.attributes.messages);
+		this.view = new MessageView({
+			model : messageModel,
 			region: 'message',
 		});
     }, 
