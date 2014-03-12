@@ -161,9 +161,10 @@ a {
     cursor: pointer;
     margin-left: 120px;
     padding: 5px 8px;
-    width: 80px;
+    width: 90px;
 	height: 30px;
 	text-align: center;
 	line-height: 30px;
 	display: inline-block;
+	border: 0;
 }

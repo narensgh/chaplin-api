@@ -6,11 +6,11 @@ return array(
             'front' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/front',
+                    'route'    => '/',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Front\Controller',
                         'controller'    => 'Index',
-                        'action'        => 'index',
+                        'action'        => 'login',
                     ),
                 ),
                 'may_terminate' => true,
@@ -18,7 +18,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action[/:id]]]',
+                            'route'    => 'front/[:controller[/:action[/:id]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -29,21 +29,21 @@ return array(
                     ),
                 ),
             ),
-        		'base' => array(
-        				'type' => 'segment',
-        				'options' => array(
-        						'route'    => '/front[/:controller][/:action]',
-        						'constraints' => array(
-        								'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-        								'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-        						),
-        						'defaults' => array(
-        								'__NAMESPACE__' => 'Front\Controller',
-        								'controller'    => 'Index',
-        								'action'        => 'login',
-        						),
-        				),
+        	'base' => array(
+        		'type' => 'segment',
+        		'options' => array(
+        			'route'    => '/front/[:controller[/:action]]',
+        			'constraints' => array(
+        				'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+        				'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+        			),
+        			'defaults' => array(
+        				'__NAMESPACE__' => 'Front\Controller',
+        				'controller'    => 'Login',
+        				'action'        => 'index',
+        			),
         		),
+        	),
         ),
     ),
     'service_manager' => array(
