@@ -7,7 +7,8 @@ define(['views/base/view', 'text!templates/site.html'], function(View, template)
     regions: {
     	friends: '#friends-container',
     	messageForm: '#message-form-container',
-    	message: '#message-container'
+    	message: '#message-container',
+    	login : '#login-container'
     },
     template: template,
   });

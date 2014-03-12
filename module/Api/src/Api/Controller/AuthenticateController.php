@@ -11,7 +11,7 @@ class AuthenticateController extends AbstractRestfulController
 	private $_em;
 	function __construct()
 	{
-	
+		$this->setIdentifierName("authData");
 	}
 	
 	/**
@@ -32,14 +32,12 @@ class AuthenticateController extends AbstractRestfulController
 	 * @param  mixed $id
 	 * @return mixed
 	 */
-	public function get($id)
+	public function get($authData)
 	{
-		$data = array('username'=>'narendra','password'=>'singh');
-// 		echo $id = json_encode($data);
-		$authData = json_decode($id);
-		$authenticateService = new AuthenticateService($authData);
-		$auth = $releaseService->auth();
-		return new JsonModel($release);
+		$authData = json_decode($authData);
+		$authenticateService = new AuthenticateService($this->getEntityManager());
+		$auth = $authenticateService->getAuth($authData);
+		return new JsonModel(array('response'=>$auth));
 	}
 	/**
 	 * Return list of resources

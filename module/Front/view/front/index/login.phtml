@@ -1,0 +1,34 @@
+<?php
+    $title = 'User Login';
+    $this->headTitle($title);
+?>
+<div class="wrapper">
+<header class="nav-header">
+		&nbsp;
+	</header>
+	<section class="page-container">
+<div class="login-container">
+    <div class="sign-title">
+        <?php
+            echo $this->escapeHtml($title);
+        ?>
+    </div>
+    <?php
+        $loginForm = $this->loginForm;
+        $loginForm->setAttribute('action', '');
+        $loginForm->prepare();
+        echo $this->form()->openTag($loginForm);
+    ?>
+    <div class="content">
+        <?php
+            echo $this->formRow($loginForm->get('username'));
+            echo $this->formRow($loginForm->get('password'));
+            echo $this->formSubmit($loginForm->get('submit'));
+         ?>
+    </div>
+    <?php
+        echo $this->form()->closeTag();
+    ?>
+</div>
+</section>
+</div>

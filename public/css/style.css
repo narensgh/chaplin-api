@@ -13,7 +13,7 @@ body {
     width: 900px;
 }
 .nav-header {
-    background-color: #75A319;
+    background-image: url("../img/btn-green.png");
     border-bottom: 0 none;
     color: #FFFFFF;
     font-family: 'Helvetica';
@@ -108,14 +108,62 @@ a {
 	font: 300 16px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
 	padding: 5px;
 }
-#submit-post
+.submit
 {
 	background: #75A319;
 	padding:6px 5px;
-	width: 80px;
+	width: 90px;
 	display: inline-block;
 	border-radius: 4px;
 	cursor: pointer;
 	color: #fefefe;
 	font: 500 16px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* ----------------------------- Working for login ------------------------- */
+
+.login-container{
+    margin: 50px auto ;
+    width: 480px;
+}
+.sign-title {
+    background: none repeat scroll 0 0 #888;
+    color: #FEFEFE;
+    font-weight: bold;
+    padding: 6px;
+    text-align: center;
+}
+.content {
+    border: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+    font-family: verdana;
+    line-height: 55px;
+    padding: 10px 25px;
+}
+.label1 {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: normal;
+    width: 140px;
+}
+.textbox {
+    border: 1px solid #596571;
+    border-radius: 5px;
+    height: 28px;
+    line-height: 28px;
+    padding: 2px;
+    width: 275px;
+}
+.sign-in {
+    background-image: url("../img/btn-green.png");
+    border-radius: 5px;
+    color: #FEFEFE;
+    cursor: pointer;
+    margin-left: 120px;
+    padding: 5px 8px;
+    width: 80px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	display: inline-block;
 }

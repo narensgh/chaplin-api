@@ -7,6 +7,7 @@
     'use strict';
 var UserController = Controller.extend({	
 	wall: function(params) {
+		var param = jQuery.parseJSON(decodeURIComponent(params.params));
 		var userModel = new UserModel();
 		this.view = new UserView({
 			model: userModel,
@@ -19,7 +20,7 @@ var UserController = Controller.extend({
 		var messageData = messageModel.fetch({
 				async:false,
 				data: {
-					'userId': 12
+					'userId': param.userId
 				},
 			});
 		messageModel.attributes.messages = messageData.responseJSON;
