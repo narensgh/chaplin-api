@@ -57,7 +57,7 @@ class MessageController extends AbstractRestfulController
 		$messageService = new MessageService($this->getEntityManager());
 		$messages = $messageService->getMessage($userId);
 		$this->response->setStatusCode(200);
-		return new JsonModel($messages);
+		return new JsonModel(array("messages"=>$messages));
 	}
 	
 	/**

@@ -35,7 +35,7 @@ class UserController extends AbstractRestfulController
 	{
 		$userService = new UserService($this->getEntityManager());
 		$users = $userService->getUser();
-		return new JsonModel($users);
+		return new JsonModel(array("users"=>$users));
 	}
 	
 

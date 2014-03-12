@@ -2,17 +2,17 @@ define(['models/base/model'], function(Model) {
   'use strict';
 
   var Message = Model.extend({
-	  url : "http://localhost/chaplin-api/api/message",
+	  sync : function(method, model, options) {
+			options.url = this.ApiUrl + "message";
+			Backbone.sync.apply(this, arguments);
+	  },
+	  
 	  initialize: function(){
 		  Model.prototype.initialize.apply(this, arguments);
-	  },
-	  /*fetchUsers: function(){
-			var users = this.fetch({
-					async:false,
-				});
-			return users.responseJSON;
-		}*/
+		  this.fetch({
+				async : false,
+		  });
+	  }
   });
-
   return Message;
 });

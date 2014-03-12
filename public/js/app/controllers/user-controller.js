@@ -23,7 +23,7 @@ var UserController = Controller.extend({
 					'userId': param.userId
 				},
 			});
-		messageModel.attributes.messages = messageData.responseJSON;
+		
 		console.log(messageModel.attributes.messages);
 		this.view = new MessageView({
 			model : messageModel,
