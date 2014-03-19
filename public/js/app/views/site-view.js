@@ -8,7 +8,8 @@ define(['views/base/view', 'text!templates/site.html'], function(View, template)
     	friends: '#friends-container',
     	messageForm: '#message-form-container',
     	message: '#message-container',
-    	login : '#login-container'
+    	login : '#login-container',
+    	navigation : "#navigation"
     },
     template: template,
   });

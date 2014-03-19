@@ -2,6 +2,10 @@
 
 namespace Front\Controller;
 
+use Zend\View\Model\JsonModel;
+
+use Zend\Crypt\PublicKey\Rsa\PublicKey;
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -48,5 +52,10 @@ class IndexController extends AbstractActionController
     	unset($this->_session->userId);
     	$this->_session->afterLogout = true;
     	$this->redirectTo(array('controller'=>'login','action'=>'login'));
+    }
+   	
+    public function sessiondataAction()
+    {
+    	return new JsonModel(array("userdata"=>array("name"=>"Narendra", "userId"=>1)));
     }
 }

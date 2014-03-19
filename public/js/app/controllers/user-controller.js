@@ -7,7 +7,10 @@
     'use strict';
 var UserController = Controller.extend({	
 	wall: function(params) {
-		var param = jQuery.parseJSON(decodeURIComponent(params.params));
+		var param;
+		if($.isEmptyObject(params)){
+//			var param = jQuery.parseJSON(decodeURIComponent(params.params));
+		}
 		var userModel = new UserModel();
 		this.view = new UserView({
 			model: userModel,
@@ -17,16 +20,8 @@ var UserController = Controller.extend({
 			region: 'messageForm',
 		});
 		var messageModel = new MessageModel();
-		var messageData = messageModel.fetch({
-				async:false,
-				data: {
-					'userId': param.userId
-				},
-			});
-		
-		console.log(messageModel.attributes.messages);
 		this.view = new MessageView({
-			model : messageModel,
+			model: messageModel,
 			region: 'message',
 		});
     }, 

@@ -9,7 +9,7 @@ define([ 'views/base/view','models/message', 'text!templates/MessageForm.html' ]
 				'click #submit-post' : 'saveMessage',
 			},
 		initialize: function(){
-			this.model = new MessageModel();
+			//this.model = new MessageModel();
 		},
 		saveMessage: function(){
 			var message= {};

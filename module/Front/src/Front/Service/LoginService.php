@@ -24,7 +24,7 @@ class LoginService{
 			{
 				$this->session->userId = $response->userdata->userId;
 				$this->session->firstName = $response->userdata->firstName;
-				return array('controller' => 'index', 'action' => 'index');
+				return array('controller' => 'index', 'action' => 'wall');
 			}
 			else 
 			{
