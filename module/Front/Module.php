@@ -11,6 +11,7 @@ namespace Front;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
 
 class Module
 {
@@ -19,6 +20,7 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+		$session = new Container('front');
     }
 
     public function getConfig()

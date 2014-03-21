@@ -23,9 +23,9 @@ class MessageService
 		return $messageId;
 	}
 	
-	public function getMessage($userId)
+	public function getMessage($userId, $frndId)
 	{
-		$messages = $this->_message->getMessage($userId);
+		$messages = $this->_message->getMessage($userId, $frndId);
 		return $messages;
 	}
 

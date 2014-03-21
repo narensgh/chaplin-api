@@ -33,14 +33,20 @@ class Message
 		}
 	}
 	
-	public function getMessage($userId)
+	public function getMessage($userId, $frndId)
 	{
 		try{
 		$qb = $this->_em->createQueryBuilder();
 		$qb->select('m')
 		->from('Api\Model\Entity\Messages','m')
-		->where('m.fromId = :userId')
-		->setParameter('userId', $userId);
+		->where('m.fromId = :userId');
+		if($frndId){
+			$qb->andwhere('m.toId = :frndId');
+		}
+		$qb->setParameter('userId', $userId);
+		if($frndId){
+			$qb->setParameter('frndId', $frndId);
+		}
 		return $qb->getQuery()->getArrayResult();
 		}catch(Exception $ex){
 			print_r($ex);

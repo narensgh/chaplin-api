@@ -12,12 +12,14 @@ define(['models/base/model'], function(Model) {
 		  },
 	  initialize: function(){
 		  Model.prototype.initialize.apply(this, arguments);
-		  this.fetch({
-				async : false,
-				data:{
-					userId: $(this.ele.sessionUserId).val()
-				}
+	  },
+	  fetchData: function(params = {}){
+		params.userId = $(this.ele.sessionUserId).val();
+		  var fetchedData = this.fetch({
+				async: false,
+				data: params
 		  });
+		return this;
 	  }
   });
   return Message;

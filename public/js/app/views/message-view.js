@@ -5,6 +5,13 @@ var MessageView = View.extend({
 		autoRender : true,
 		template : template,
 		className : '',
+		ele:{
+			  sessionUserId: "#sessionUserId",
+		  },
+		initialize: function(){
+			//this.model = new MessageModel();
+			//this.model.fetchData();
+		}
 });
 
 return MessageView;

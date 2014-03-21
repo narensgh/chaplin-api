@@ -56,6 +56,6 @@ class IndexController extends AbstractActionController
    	
     public function sessiondataAction()
     {
-    	return new JsonModel(array("userdata"=>array("name"=>"Narendra", "userId"=>1)));
+    	return new JsonModel(array("userdata"=>array("name"=>$_SESSION['front']['firstName'], "userId"=>$_SESSION['front']['userId'])));
     }
 }
