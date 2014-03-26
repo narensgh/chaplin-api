@@ -37,16 +37,18 @@ class Message
 	{
 		try{
 		$qb = $this->_em->createQueryBuilder();
-		$qb->select('m')
+		$qb->select('m.messageId, m.message, u1.firstName as fromName, u2.firstName as toName')
 		->from('Api\Model\Entity\Messages','m')
-		->where('m.fromId = :userId');
+		->innerJoin('m.fromId', 'u1')
+		->innerJoin('m.toId', 'u2')
+		->where('u1.userId = :userId');
 		if($frndId){
-			$qb->andwhere('m.toId = :frndId');
+			$qb->andWhere('u2.userId = :frndId');;
 		}
 		$qb->setParameter('userId', $userId);
 		if($frndId){
 			$qb->setParameter('frndId', $frndId);
-		}
+		} 
 		return $qb->getQuery()->getArrayResult();
 		}catch(Exception $ex){
 			print_r($ex);

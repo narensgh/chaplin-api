@@ -23,15 +23,20 @@ class Messages
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="from_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Api\Model\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="from_id", referencedColumnName="user_id")
+     *   })
      */
     private $fromId;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="to_id", type="integer", nullable=false)
+     * 
+     * @ORM\ManyToOne(targetEntity="Api\Model\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="to_id", referencedColumnName="user_id")
+     * })
      */
     private $toId;
 
