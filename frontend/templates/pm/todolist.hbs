@@ -1,2 +1,11 @@
-{{listname}}
-<div id="todolist-{{todoListId}}"></div>
+<div class="todos-container">
+    <div class="todolist-container">
+        <div class="todolist-action-button">
+            <span id="deleteTodolist-{{todoListId}}" title="Delete Todo List" class="delete delete-todolist">&nbsp;</span>
+            <!--<span class="edit-todo" id="edit-v">Edit</span>-->
+        </div>
+        <span class="todo-header" id="todolist-{{todoListId}}">{{listname}}</span>
+    </div>
+    <div id="todos-{{todoListId}}"></div>
+    <div class="new-todo-container" id="addtodo-{{todoListId}}"></div>
+</div>

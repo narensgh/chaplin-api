@@ -21,6 +21,7 @@ $(document).ready(function() {
         }
     });
 });
+
 },{"backbone":13,"chaplin":14,"jquery":23}],2:[function(require,module,exports){
 /**
  * base collection
@@ -18194,10 +18195,29 @@ module.exports = HandlebarsCompiler.template({"compiler":[6,">= 2.0.0-beta.1"],"
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var helper;
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return this.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"description","hash":{},"data":data}) : helper)))
-    + "\r\n";
+  return "<div id=\"todoli-"
+    + alias3(((helper = (helper = helpers.todoId || (depth0 != null ? depth0.todoId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoId","hash":{},"data":data}) : helper)))
+    + "\" class=\"todo-content\">\r\n    <div class=\"todos-action-button\">\r\n        <span title=\"Delete Todo\" id=\"delete-"
+    + alias3(((helper = (helper = helpers.todoListId || (depth0 != null ? depth0.todoListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoListId","hash":{},"data":data}) : helper)))
+    + "-"
+    + alias3(((helper = (helper = helpers.todoId || (depth0 != null ? depth0.todoId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoId","hash":{},"data":data}) : helper)))
+    + "\" class=\"delete delete-todo\">&nbsp;</span>\r\n        <span id=\"edit-"
+    + alias3(((helper = (helper = helpers.todoListId || (depth0 != null ? depth0.todoListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoListId","hash":{},"data":data}) : helper)))
+    + "-"
+    + alias3(((helper = (helper = helpers.todoId || (depth0 != null ? depth0.todoId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoId","hash":{},"data":data}) : helper)))
+    + "\" class=\"edit-todo\">Edit</span>\r\n    </div>\r\n    <div class=\"desc-content\">\r\n        <input type=\"checkbox\" id=\"todo-"
+    + alias3(((helper = (helper = helpers.todoListId || (depth0 != null ? depth0.todoListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoListId","hash":{},"data":data}) : helper)))
+    + "-"
+    + alias3(((helper = (helper = helpers.todoId || (depth0 != null ? depth0.todoId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoId","hash":{},"data":data}) : helper)))
+    + "\" class=\"todo-check\">\r\n        <label id=\"todolabel-"
+    + alias3(((helper = (helper = helpers.todoId || (depth0 != null ? depth0.todoId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoId","hash":{},"data":data}) : helper)))
+    + "\" class=\"todo-desc \">\r\n            Todo-"
+    + alias3(((helper = (helper = helpers.todoId || (depth0 != null ? depth0.todoId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoId","hash":{},"data":data}) : helper)))
+    + " : "
+    + alias3(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"description","hash":{},"data":data}) : helper)))
+    + "\r\n        </label>\r\n    </div>\r\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":22}],28:[function(require,module,exports){
@@ -18206,31 +18226,33 @@ var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return alias3(((helper = (helper = helpers.listname || (depth0 != null ? depth0.listname : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"listname","hash":{},"data":data}) : helper)))
-    + "\r\n<div id=\"todolist-"
+  return "<div class=\"todos-container\">\r\n    <div class=\"todolist-container\">\r\n        <div class=\"todolist-action-button\">\r\n            <span id=\"deleteTodolist-"
     + alias3(((helper = (helper = helpers.todoListId || (depth0 != null ? depth0.todoListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoListId","hash":{},"data":data}) : helper)))
-    + "\"></div>\r\n";
+    + "\" title=\"Delete Todo List\" class=\"delete delete-todolist\">&nbsp;</span>\r\n            <!--<span class=\"edit-todo\" id=\"edit-v\">Edit</span>-->\r\n        </div>\r\n        <span class=\"todo-header\" id=\"todolist-"
+    + alias3(((helper = (helper = helpers.todoListId || (depth0 != null ? depth0.todoListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoListId","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias3(((helper = (helper = helpers.listname || (depth0 != null ? depth0.listname : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"listname","hash":{},"data":data}) : helper)))
+    + "</span>\r\n    </div>\r\n    <div id=\"todos-"
+    + alias3(((helper = (helper = helpers.todoListId || (depth0 != null ? depth0.todoListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoListId","hash":{},"data":data}) : helper)))
+    + "\"></div>\r\n    <div class=\"new-todo-container\" id=\"addtodo-"
+    + alias3(((helper = (helper = helpers.todoListId || (depth0 != null ? depth0.todoListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"todoListId","hash":{},"data":data}) : helper)))
+    + "\"></div>\r\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":22}],29:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<ul id=\"todolists\"></ul>\r\n";
+    return "";
 },"useData":true});
 
 },{"hbsfy/runtime":22}],30:[function(require,module,exports){
-// hbsfy compiled Handlebars template
-var HandlebarsCompiler = require('hbsfy/runtime');
-module.exports = HandlebarsCompiler.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<ul id=\"todos\"><ul>\r\n";
-},"useData":true});
-
+module.exports=require(29)
 },{"hbsfy/runtime":22}],31:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"header\"></div>\r\n<div id=\"content\"></div>\r\n<div id=\"footer\"></div>\r\n";
+    return "<div id=\"header\"></div>\r\n<div id=\"content\" class=\"wrapper\"></div>\r\n<div id=\"footer\"></div>\r\n";
 },"useData":true});
 
 },{"hbsfy/runtime":22}],32:[function(require,module,exports){
@@ -18306,7 +18328,7 @@ var $ = require('jquery'),
 
 var TodoView = View.extend({
     template: template,
-    tagName: 'li'
+    noWrap: true,
 });
 module.exports = TodoView;
 
@@ -18320,11 +18342,11 @@ var $ = require('jquery'),
     template = require('../../templates/pm/todolist.hbs');
 
 var els = {
-    todosContainer: '#todolist-'
+    todosContainer: '#todos-'
 };
 var TodoView = View.extend({
     template: template,
-    tagName: 'li',
+    noWrap: true,
     render: function() {
         View.prototype.render.call(this);
         var container = els.todosContainer + this.model.get('todoListId');
@@ -18347,13 +18369,13 @@ var $ = require('jquery'),
 	
 	    
 var els = {
-    list: '#todolists'
+    list: '#todo-list'
 };
 var TodosView = CollectionView.extend({
-    className: 'todolists',
+    className: 'todo-list',
     region: 'content',
     itemView: TodolistView,
-    listSelector: els.list,
+//    listSelector: els.list,
     autoRender: true,
     template: template,
     initialize: function(options) {
@@ -18371,13 +18393,13 @@ var $ = require('jquery'),
     TodoView              = require('./todo_view'),
     template = require('../../templates/pm/todos.hbs');
 
-var els = {
-    list: '#todos'
-};
+//var els = {
+//    list: '#todos'
+//};
 var TodosView = CollectionView.extend({
     className: 'todos',
     itemView: TodoView,
-    listSelector: els.list,
+//    listSelector: els.list,
     template: template
 });
 module.exports = TodosView;

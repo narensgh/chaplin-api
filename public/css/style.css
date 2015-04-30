@@ -168,3 +168,212 @@ a {
 	display: inline-block;
 	border: 0;
 }
+
+
+/* ----------------------Working Project Management -----------------*/
+.pm-project{
+    color: #fefefe;
+    padding: 4px;
+    text-align: center;
+    /*vertical-align: baseline;*/
+    /*cursor: pointer;*/
+    overflow: hidden;
+}
+/*.pm-project:hover{
+    opacity: 0.8;
+}*/
+.pm-project .project-logo{ 
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid;
+    border-radius: 50%;
+    margin: 20px 0 10px 60px;
+    overflow: hidden;
+    padding: 3px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+.pm-project .project-logo img{
+    width: 60px;
+    border: none;
+}
+.pm-project .project-title {
+    text-transform: capitalize;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+.pm-project .project-setting {
+    float: right;
+    width: 30px;
+    height: 33px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url('../img/setting.png');
+}
+.project-wrapper{
+    padding: 10px;
+}
+.project-wrapper .project-header{
+    border-bottom: 1px dashed;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+}
+.project-wrapper .project-title {
+    color: #000;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    text-transform: capitalize;
+}
+.project-wrapper .project-desc {
+    color: #aa9c84;
+}
+.todo-list {
+    font-family: helvetica;
+}
+.todo-list .todo-header{
+    background: none repeat scroll 0 0 #dcdcdb;
+    color: #1c5c76;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    padding: 12px;
+    text-transform: capitalize;
+    width: 100%;
+}
+.todo-list .todo-header:hover {
+    text-decoration: underline;
+}
+.todolist-container {
+    line-height: 12px;
+    margin-bottom: 12px;
+}
+.todolist-container:hover .todolist-action-button {
+    display: inline-block;
+}
+.todo-list .todolist-action-button {
+    display: none;
+    position:absolute;
+}
+.todo-list ul {
+    padding: 0;
+    margin: 0;
+}
+.todo-list ul li {
+    list-style: outside none none;
+}
+.todo-list .todos-container {
+    margin-bottom: 30px;
+}
+.todo-list .todo-desc {
+    color: #333;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+.todo-list .todo-desc:hover {
+    color: #508195;
+    text-decoration: underline;
+}
+.todo-list .desc-content {
+    margin-left: 38px;
+}
+.todo-list .todos-action-button {
+    position:absolute;
+    display: none;
+    line-height: 17px;
+}
+.todo-content{
+    line-height: 20px;
+}
+.todo-content:hover .todos-action-button{
+    display: inline-block;
+}
+.edit-todo, .delete-todo, .delete-todolist{
+    font-size: 12px;
+    cursor: pointer;
+}
+.edit-todo:hover{
+    text-decoration: underline;
+}
+.edit-todo:hover{
+    color: #508195;
+}
+.delete{
+    background-image: url('../img/delete-3.gif');
+    background-repeat:no-repeat;
+    width: 12px;
+    display: inline-block;
+    line-height: 12px;
+}
+.new-todolist-container{
+    border-bottom: 1px dashed;
+    line-height: 36px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+}
+.new-todolist-container h4{
+    color: #cc0000;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: normal;
+    width: 150px;
+}
+.new-todo-container .add-todo-button{
+    color: #1c92d1;
+    cursor: pointer;
+    margin:12px 0 0 60px;
+    text-decoration: underline;
+}
+.todo-new{
+    background: none repeat scroll 0 0 #f0f0f0;
+    border: 1px solid #ecfffc;
+    border-radius: 4px;
+    line-height: 36px;
+    margin: 0px 0 10px 45px;
+    padding: 10px 15px;
+    width: 600px;
+}
+.longText{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 32px;
+    padding: 5px;
+    width: 600px;
+    color: #111;
+}
+.todo-new label{
+    display: inline-block;
+    margin-right: 16px;
+    width: 280px;
+}
+
+.button1{
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #000;
+    font-family: "Lucida Grande","Helvetica Neue",helvetica,arial,sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: inline-block;
+}
+
+.select1{
+    width: 160px;
+    height: 23px;
+    font-size: 13px;
+}

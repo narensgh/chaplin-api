@@ -6,13 +6,13 @@ var $ = require('jquery'),
     TodoView              = require('./todo_view'),
     template = require('../../templates/pm/todos.hbs');
 
-var els = {
-    list: '#todos'
-};
+//var els = {
+//    list: '#todos'
+//};
 var TodosView = CollectionView.extend({
     className: 'todos',
     itemView: TodoView,
-    listSelector: els.list,
+//    listSelector: els.list,
     template: template
 });
 module.exports = TodosView;

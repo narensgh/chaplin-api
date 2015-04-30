@@ -7,11 +7,11 @@ var $ = require('jquery'),
     template = require('../../templates/pm/todolist.hbs');
 
 var els = {
-    todosContainer: '#todolist-'
+    todosContainer: '#todos-'
 };
 var TodoView = View.extend({
     template: template,
-    tagName: 'li',
+    noWrap: true,
     render: function() {
         View.prototype.render.call(this);
         var container = els.todosContainer + this.model.get('todoListId');

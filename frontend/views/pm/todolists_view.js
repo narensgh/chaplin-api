@@ -8,13 +8,13 @@ var $ = require('jquery'),
 	
 	    
 var els = {
-    list: '#todolists'
+    list: '#todo-list'
 };
 var TodosView = CollectionView.extend({
-    className: 'todolists',
+    className: 'todo-list',
     region: 'content',
     itemView: TodolistView,
-    listSelector: els.list,
+//    listSelector: els.list,
     autoRender: true,
     template: template,
     initialize: function(options) {

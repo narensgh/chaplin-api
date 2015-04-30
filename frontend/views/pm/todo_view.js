@@ -7,6 +7,6 @@ var $ = require('jquery'),
 
 var TodoView = View.extend({
     template: template,
-    tagName: 'li'
+    noWrap: true,
 });
 module.exports = TodoView;
