@@ -1,0 +1,3 @@
+doctrine-module orm:convert-mapping --namespace="Api\Model\Entity\\" --force --from-database annotation module\Api\src
+doctrine-module orm:generate-entities module\Api\src --generate-annotations=true
+

@@ -1,1 +1,12 @@
-{{description}}
+<div id="todoli-{{todoId}}" class="todo-content">
+    <div class="todos-action-button">
+        <span title="Delete Todo" id="delete-{{todoListId}}-{{todoId}}" class="delete delete-todo">&nbsp;</span>
+        <span id="edit-{{todoListId}}-{{todoId}}" class="edit-todo">Edit</span>
+    </div>
+    <div class="desc-content">
+        <input type="checkbox" id="todo-{{todoListId}}-{{todoId}}" class="todo-check">
+        <label id="todolabel-{{todoId}}" class="todo-desc ">
+            Todo-{{todoId}} : {{description}}
+        </label>
+    </div>
+</div>

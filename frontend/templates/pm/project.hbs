@@ -1,3 +1,11 @@
-<div id="project-{{projectId}}">
-    <span><a href="home/id/{{projectId}}"> {{projectName}}</a></span>
+<div id="project-{{projectId}}" class="small-square-box cyan-box pm-project">
+    <span id="project-setting-{{projectId}}" class="project-setting" title="project settings"></span>    
+    <div id="project-logo-{{projectId}}" title="{{projectName}}" class="project-logo">
+        {{#if logo}}
+        <img title="{{projectName}}" src="{{logo}}" />
+        {{/if}}
+    </div>
+    <span id="project-title-{{projectId}}" title="{{projectName}}" class="project-name">
+        <a href="pm/id/{{projectId}}"> {{projectName}}</a>
+    </span>
 </div>

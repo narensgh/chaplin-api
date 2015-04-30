@@ -1,0 +1,16 @@
+<div class="todo-new">
+    <input type="text" class="tododescription ltextbox" id="tododescription-{{todolistId}}" placeholder="Add new todo" value=""/>
+    <label>
+        <strong>Assigned to : </strong>
+        <select id="assignedTo-{{todolistId}}" class="select1">
+            <option value="0">Unassigned</option>
+        </select>
+    </label>
+    <label>
+        <strong>Due on : </strong>
+        <a href="#" id="tododuedate-{{todolistId}}">No due date</a>
+    </label>
+    <input type="button" value="{{addButtonText}}" class=" button1 {{addButtonClass}}" id="todobtn-{{todolistId}}" />
+    or
+    <input type="button" value="{{cancelButtonText}}" class="button1 {{cancelButtonClass}}" id="cancelTodoForm-{{todolistId}}"/>
+</div>

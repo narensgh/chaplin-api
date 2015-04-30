@@ -13,10 +13,10 @@ var Chaplin = require('chaplin'),
 
 $(document).ready(function() {
     new Application({
-        root: '/chaplin-api/front/pm/',
+        root: '/chaplin-adarsh/frontline/apps/',
         routes: function(match) {
-            match('home', 'pm#index');
-            match('home/id/:projectId', 'pm#todo');
+            match('pm', 'pm#index');
+            match('pm/id/:projectId', 'pm#todo');
         }
     });
 });

@@ -5,6 +5,6 @@ var Collection   = require('../chaplin_collection'),
 
 var TodoCollection = Collection.extend({
     model: TodoModel,
-    url:'/taskmanager/application/todo'
+    url:'/chaplin-adarsh/sandapi/pmtodo'
 });
 module.exports = TodoCollection;

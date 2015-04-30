@@ -4,17 +4,15 @@ var $ = require('jquery'),
     _ = require('underscore'),
     CollectionView = require('../collection_view'),
     TodolistView              = require('./todolist_view'),
-    template = require('../../templates/pm/todolists.hbs');
-	
-	    
-var els = {
-    list: '#todolists'
-};
+    template = require('../../templates/pm/todolists.hbs'),
+    els = {
+        loading : '#loading'
+    };
 var TodosView = CollectionView.extend({
-    className: 'todolists',
+    className: 'todo-list',
     region: 'content',
     itemView: TodolistView,
-    listSelector: els.list,
+//    loadingSelector: els.loading,
     autoRender: true,
     template: template,
     initialize: function(options) {

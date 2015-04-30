@@ -6,22 +6,32 @@ var TodoModel = Backbone.RelationalModel.extend({
     defaults: {
         todoListId: '',
         description: '',
-        active: 'yes',
+        active: true,
         assignedTo: '1'
     },
     idAttribute: 'todoId',
-    urlRoot: function() {
-        return '/taskmanager/application/todo';
+    url: '/chaplin-adarsh/sandapi/pmtodo',
+    initialize: function(attrs) {
+        this.todoListId = attrs.todolistId;
     },
-    sync: function(method, model, options)
-    {
+    sync: function(method, model, options) {
         var idAttribute = {};
         idAttribute.todoId = this.get("todoId");
-        options.url = "/taskmanager/application/todo" + this.buildParam(method, idAttribute);
+        options.url = this.url + this.buildParam(method, idAttribute);
         Backbone.sync.apply(this, arguments);
     },
-    buildParam: function(method, idAttribute)
-    {
+    // overwrite save method to filter out data to not send to the server
+    save: function(attrs, options) {
+        console.log(attrs, options, this);
+
+        options || (options = {});
+        attrs || (attrs = _.clone(this.attributes));
+//        options.data = JSON.stringify(attrs);
+        // call Backbone save function
+        Backbone.Model.prototype.save.call(this, attrs, options);
+    
+    },
+    buildParam: function(method, idAttribute) {
         var response = {};
         switch (method) {
             case 'update':

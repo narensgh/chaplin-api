@@ -12,7 +12,7 @@ var els = {
 var TodosView = CollectionView.extend({
     className: 'todos',
     itemView: TodoView,
-    listSelector: els.list,
+//    listSelector: els.list,
     template: template
 });
 module.exports = TodosView;

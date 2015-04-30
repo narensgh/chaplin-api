@@ -5,7 +5,7 @@ var _            = require('underscore'),
     TodolistModel = require('../../models/pm/todolist_model');
 
 var TodolistCollection = Collection.extend({
-    url: '/taskmanager/application/todolist',
+    url: '/chaplin-adarsh/sandapi/pmtodolist',
     model: TodolistModel,
     initialize: function(models, options) {
         Collection.prototype.initialize.apply(this, arguments);
