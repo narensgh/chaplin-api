@@ -21,12 +21,10 @@ var TodoView = View.extend({
     render: function() {
         View.prototype.render.call(this);
         var container = els.todosContainer + this.model.get('todoListId');
-        this.subview('addTodoView', AddTodoView);
         this.subview('todosView', new TodosView({
             collection: this.model.get('todos'),
             el: this.$(container)
         }));
-
     },
     deleteTodolist: function() {
         var flag = confirm('Are you sure to delete this todo list?');
@@ -47,7 +45,7 @@ var TodoView = View.extend({
     },
     openAddTodoForm: function() {
         var container = els.todoForm + this.model.get('todoListId');
-        this.subview('addTodoView', {
+        new AddTodoView({
             collection: this.model.get('todos'),
             el: this.$(container),
             todolistId: this.model.get('todoListId')

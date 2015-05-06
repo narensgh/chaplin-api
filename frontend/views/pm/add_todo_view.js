@@ -27,7 +27,6 @@ var AddTodoView = View.extend({
         'click .cancelTodoAddForm': 'cancelTodoAddForm'
     },
     initialize: function(options) {
-        console.log(this);
         View.prototype.initialize.call(this);
         this.todolistId = options.todolistId;
         if (!this.model) {
@@ -64,11 +63,9 @@ var AddTodoView = View.extend({
             description: description,
             todoListId: this.todolistId
         });
-        console.log('addNewTodo');
         this.saveTodo(todo);
     },
     saveTodo: function(todo) {
-        console.log('saveTodo');
         var options = {
             success: function(model, response) {
                 if(response.todoId) {
@@ -85,6 +82,7 @@ var AddTodoView = View.extend({
     cancelTodoAddForm: function() {
         var todoFormContainer = $(els.addtodo + this.todolistId);
         todoFormContainer.html("<span class=\"add-todo-button\" id=\"addTodoButton-" + this.todolistId + "\">Add a to-do</span>");
+        this.undelegateEvents();
     }
 });
 module.exports = AddTodoView;

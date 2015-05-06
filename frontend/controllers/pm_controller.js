@@ -32,7 +32,7 @@ var PmController = Chaplin.Controller.extend({
         });
     },
     // launch todo list
-    todo: function(params, route, options) {
+    todos: function(params, route, options) {
         this.todoCollection.fetch();
         this.reuse('todolistsView', TodolistsView, {
             collection: this.todoCollection
