@@ -1,17 +1,20 @@
 'use strict';
 
 var Chaplin = require('chaplin'),
-        ProjectCollection = require('../collections/pm/project_collection'),
-        TodolistCollection = require('../collections/pm/todolist_collection'),
-        SiteView = require('../views/site_view'),
-        ModuleHeaderView = require('../views/pm/module_header_view'),
-        ProjectsView = require('../views/pm/projects_view'),
-        TodolistsView = require('../views/pm/todolists_view');
+    ProjectCollection = require('../collections/pm/project_collection'),
+    TodolistCollection = require('../collections/pm/todolist_collection'),
+    DiscussionCollection = require('../collections/pm/discussion_collection'),
+    SiteView = require('../views/site_view'),
+    ModuleHeaderView = require('../views/pm/module_header_view'),
+    ProjectsView = require('../views/pm/projects_view'),
+    TodolistsView = require('../views/pm/todolists_view'),
+    DiscussionsView = require('../views/pm/discussions_view');
 
 var PmController = Chaplin.Controller.extend({
     initialize: function(params) {
         Chaplin.Controller.prototype.initialize.call(this);
         this.projectCollection = new ProjectCollection();
+        this.discussionCollection = new DiscussionCollection(null, params);
         this.todoCollection = new TodolistCollection(null, params);
         this.listenTo(this.todoCollection, 'add', this.fetchTodo);
     },
@@ -20,7 +23,7 @@ var PmController = Chaplin.Controller.extend({
         this.reuse('siteView', SiteView);
         this.reuse('moduleHeaderView', ModuleHeaderView, {
             moduleName: 'Project Management',
-            collection: this.projectCollection 
+            collection: this.projectCollection
         });
     },
     // launch app by displaying projects
@@ -38,6 +41,13 @@ var PmController = Chaplin.Controller.extend({
             collection: this.todoCollection
         });
     },
+    // launch todo discussion
+    todo: function(params, route, options) {
+//        this.discussionCollection.fetch();
+        this.reuse('discussionsView', DiscussionsView, {
+            collection: this.discussionCollection
+        });
+    },
     fetchTodo: function(model, collection, options) {
         model.get('todos').fetch({
             data: {
@@ -46,7 +56,7 @@ var PmController = Chaplin.Controller.extend({
         });
     },
     fetchProjectByParams: function(params) {
-        
+
     },
     renderProjectInfo: function() {
         this.reuse('moduleHeaderView', ModuleHeaderView, {

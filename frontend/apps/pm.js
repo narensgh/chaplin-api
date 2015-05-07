@@ -5,7 +5,7 @@ var $ = require('jquery'),
 Backbone.$ = $;
 var Chaplin = require('chaplin'),
     Application = Chaplin.Application.extend({
-         title: 'Project Management',
+        title: 'Project Management',
         initialize: function(options) {
             Chaplin.Application.prototype.initialize.call(this, options);
         }
@@ -13,10 +13,12 @@ var Chaplin = require('chaplin'),
 
 $(document).ready(function() {
     new Application({
-        root: '/chaplin-adarsh/frontline/apps/',
+        root: '/chaplin-api/front/pm/',
         routes: function(match) {
-            match('pm', 'pm#index');
-            match('pm/id/:projectId', 'pm#todo');
+            match('', 'pm#index');
+            match('index', 'pm#index');
+            match('todos/id/:projectId', 'pm#todos');
+            match('todo/id/:todoId', 'pm#todo');
         }
     });
 });

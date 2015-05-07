@@ -40,9 +40,6 @@ var TodoView = View.extend({
             });
         }
     },
-    formOptions: function() {
-        
-    },
     openAddTodoForm: function() {
         var container = els.todoForm + this.model.get('todoListId');
         new AddTodoView({
