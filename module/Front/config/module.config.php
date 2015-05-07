@@ -18,7 +18,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => 'front/[:controller[/:action[/:id]]]',
+                            'route'    => 'front/[:controller[/:action]/id/[:id]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -67,7 +67,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Front\Controller\Index' => 'Front\Controller\IndexController'
+            'Front\Controller\Index' => 'Front\Controller\IndexController',
+            'Front\Controller\Pm' => 'Front\Controller\PmController'
         ),
     ),
     'view_manager' => array(
