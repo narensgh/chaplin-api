@@ -3,13 +3,17 @@
 var $ = require('jquery'),
     _ = require('underscore'),
     View = require('../chaplin_view'),
-    template = require('../../templates/pm/todo.hbs');
-
+	AddTodoView = require('./add_todo_view'),
+    template = require('../../templates/pm/todo.hbs'),
+	els = {
+		editTodoForm : '#edit-todo-container-'
+	};
 var TodoView = View.extend({
     template: template,
     noWrap: true,
     events: {
-        'click .delete-todo': 'deleteTodo'
+        'click .delete-todo': 'deleteTodo',
+		'click .edit-todo' : 'openEditTodoForm'
     },
     deleteTodo: function() {
         var flag = confirm('Are you sure to delete this todo?');
@@ -24,6 +28,13 @@ var TodoView = View.extend({
                 wait: true
             });
         }
-    }
+    },
+	openEditTodoForm: function() {
+		var container = els.editTodoForm + this.model.get('todoId');
+        new AddTodoView({
+            momdel: this.model,
+            el: this.$(container)
+        });
+	}
 });
 module.exports = TodoView;

@@ -5,8 +5,9 @@
     </div>
     <div class="desc-content">
         <input type="checkbox" id="todo-{{todoListId}}-{{todoId}}" class="todo-check">
-        <label id="todolabel-{{todoId}}" class="todo-desc ">
+        <label id="todolabel-{{todoId}}" class="todo-desc {{#if active}}label{{else}} strike{{/if}}">
             <a title="discuss this todo" href="../../todo/id/{{todoId}}">Todo-{{todoId}} : {{description}}</a>
         </label>
+		<div id="edit-todo-container-{{todoId}}"></div>
     </div>
 </div>
