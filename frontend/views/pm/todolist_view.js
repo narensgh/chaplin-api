@@ -16,7 +16,8 @@ var TodoView = View.extend({
     noWrap: true,
     events: {
         'click .delete-todolist': 'deleteTodolist',
-        'click .add-todo-button': 'openAddTodoForm'
+        'click .add-todo-button': 'openAddTodoForm',
+        'change .todo-check': 'toggleCompleted',
     },
     render: function() {
         View.prototype.render.call(this);
@@ -40,6 +41,31 @@ var TodoView = View.extend({
             });
         }
     },
+    toggleCompleted: function(e) {
+        var todoStatus = {},
+            todoId = e.target.id.split('-')[2],
+            todo = this.model.get('todos').findWhere({todoId: Number(todoId)}),
+            confirmMsg = "Todo will be marked as ",
+			options = {
+				success: function(model, response) {
+					console.log("Updated Successfully..");
+				}.bind(this), 
+				error: function(model, response) {
+					console.log("Error occurred while Updating");
+				}.bind(this)
+			};
+        if (todo.get('active') === true) {
+            confirmMsg += "completed.. !!";
+            todoStatus.active = false;
+        } else {
+            confirmMsg += "active.. !!";
+            todoStatus.active = true;
+        }
+        if (confirm(confirmMsg)) {
+            todo.set(todoStatus);
+            todo.save(null, options);
+        }
+    },
     openAddTodoForm: function() {
         var container = els.todoForm + this.model.get('todoListId');
         new AddTodoView({
@@ -48,6 +74,5 @@ var TodoView = View.extend({
             todolistId: this.model.get('todoListId')
         });
     }
-
 });
 module.exports = TodoView;
