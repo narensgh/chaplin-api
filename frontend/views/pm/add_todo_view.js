@@ -17,23 +17,30 @@ var $ = require('jquery'),
     };
 var els = {
     addtodo: '#addtodo-',
-    tododescription: '#tododescription-'
+    tododescription: '#tododescription-',
+    todoContainer: '.todo-new'
 };
 
 var AddTodoView = View.extend({
     template: template,
     events: {
         'click .addtodo': 'addNewTodo',
-        'click .cancelTodoAddForm': 'cancelTodoAddForm'
+        'click .cancelTodoAddForm': 'addTodoButton',
+        'click .saveEditTodo': 'updateTodo'
     },
     initialize: function(options) {
         View.prototype.initialize.call(this);
-        this.todolistId = options.todolistId;
+        this.todoListId = options.todoListId;
         if (!this.model) {
             this.model = new TodoModel(options);
             this.setFormValues('new');
+            this.action = 'add';
         } else {
             this.setFormValues('edit');
+            this.action = 'edit';
+        }
+        if ($(els.todoContainer).length > 0) {
+            this.cancelEditTodo();
         }
     },
     getTemplateData: function() {
@@ -58,30 +65,44 @@ var AddTodoView = View.extend({
         this.formText = formText;
     },
     addNewTodo: function() {
-       var description = this.$(els.tododescription + this.todolistId).val();
-        var todo = new TodoModel({
-            description: description,
-            todoListId: this.todolistId
-        });
+        var description = this.$(els.tododescription + this.todoListId).val(),
+            todo = new TodoModel({
+                description: description,
+                todoListId: this.todoListId
+            });
         this.saveTodo(todo);
+    },
+    updateTodo: function() {
+        var description = this.$(els.tododescription + this.todoListId).val();
+        this.model.set({
+            description: description
+        });
+        this.model.save();
+        this.cancelEditTodo();
     },
     saveTodo: function(todo) {
         var options = {
             success: function(model, response) {
-                if(response.todoId) {
+                if (response.todoId) {
                     this.collection.add(model);
                 }
             }.bind(this),
-            error:function(model, response) {
+            error: function(model, response) {
                 console.log(response);
             }.bind(this)
         };
         todo.save(null, options);
-        this.cancelTodoAddForm();
+        this.addTodoButton();
     },
-    cancelTodoAddForm: function() {
-        var todoFormContainer = $(els.addtodo + this.todolistId);
-        todoFormContainer.html("<span class=\"add-todo-button\" id=\"addTodoButton-" + this.todolistId + "\">Add a to-do</span>");
+    cancelEditTodo: function() {
+        $(els.todoContainer).remove();
+        if (this.action === 'edit') {
+            this.addTodoButton();
+        }
+    },
+    addTodoButton: function() {
+        var todoFormContainer = $(els.addtodo + this.todoListId);
+        todoFormContainer.html("<span class=\"add-todo-button\" id=\"addTodoButton-" + this.todoListId + "\">Add a to-do</span>");
         this.undelegateEvents();
     }
 });

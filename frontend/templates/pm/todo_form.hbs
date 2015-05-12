@@ -1,8 +1,8 @@
 <div class="todo-new">
-    <input type="text" class="tododescription ltextbox" id="tododescription-{{todolistId}}" placeholder="Add new todo" value=""/>
+    <input type="text" class="tododescription ltextbox" id="tododescription-{{todoListId}}" placeholder="Add new todo" value="{{description}}"/>
     <label>
         <strong>Assigned to : </strong>
-        <select id="assignedTo-{{todolistId}}" class="select1">
+        <select id="assignedTo-{{todoListId}}" class="select1">
             <option value="0">Unassigned</option>
         </select>
     </label>
@@ -10,7 +10,7 @@
         <strong>Due on : </strong>
         <a href="#" id="tododuedate-{{todolistId}}">No due date</a>
     </label>
-    <input type="button" value="{{addButtonText}}" class=" button1 {{addButtonClass}}" id="todobtn-{{todolistId}}" />
+    <input type="button" value="{{addButtonText}}" class=" button1 {{addButtonClass}}" id="todobtn-{{todoListId}}" />
     or
-    <input type="button" value="{{cancelButtonText}}" class="button1 {{cancelButtonClass}}" id="cancelTodoForm-{{todolistId}}"/>
+    <input type="button" value="{{cancelButtonText}}" class="button1 {{cancelButtonClass}}" id="cancelTodoForm-{{todoListId}}"/>
 </div>

@@ -3,17 +3,20 @@
 var $ = require('jquery'),
     _ = require('underscore'),
     View = require('../chaplin_view'),
-	AddTodoView = require('./add_todo_view'),
+    AddTodoView = require('./add_todo_view'),
     template = require('../../templates/pm/todo.hbs'),
-	els = {
-		editTodoForm : '#edit-todo-container-'
-	};
+    els = {
+        editTodoForm: '#edit-todo-container-'
+    };
 var TodoView = View.extend({
     template: template,
-    noWrap: true,
     events: {
         'click .delete-todo': 'deleteTodo',
-		'click .edit-todo' : 'openEditTodoForm'
+        'click .edit-todo': 'openEditTodoForm'
+    },
+    initialize: function() {
+        View.prototype.initialize.call(this);
+        this.listenTo(this.model, 'change', this.render);
     },
     deleteTodo: function() {
         var flag = confirm('Are you sure to delete this todo?');
@@ -29,12 +32,13 @@ var TodoView = View.extend({
             });
         }
     },
-	openEditTodoForm: function() {
-		var container = els.editTodoForm + this.model.get('todoId');
+    openEditTodoForm: function() {
+        var container = els.editTodoForm + this.model.get('todoId');
         new AddTodoView({
-            momdel: this.model,
-            el: this.$(container)
+            model: this.model,
+            el: this.$(container),
+            todoListId: this.model.get('todoListId')
         });
-	}
+    }
 });
 module.exports = TodoView;
