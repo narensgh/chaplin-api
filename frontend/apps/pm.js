@@ -13,12 +13,12 @@ var Chaplin = require('chaplin'),
 
 $(document).ready(function() {
     new Application({
-        root: '/chaplin-api/front/pm/',
+        root: '/front/pm/',
         routes: function(match) {
             match('', 'pm#index');
-            match('index', 'pm#index');
-            match('todos/id/:projectId', 'pm#todos');
-            match('todo/id/:todoId', 'pm#todo');
+            match('index', 'pm#index', {name: 'index'});
+            match('todos/:projectId', 'pm#todos', {name: 'todos'});
+            match('discussion/:todoId', 'pm#discussion', {name: 'discussion'});
         }
     });
 });

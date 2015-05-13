@@ -42,7 +42,7 @@ var PmController = Chaplin.Controller.extend({
         });
     },
     // launch todo discussion
-    todo: function(params, route, options) {
+    discussion: function(params, route, options) {
 //        this.discussionCollection.fetch();
         this.reuse('discussionsView', DiscussionsView, {
             collection: this.discussionCollection

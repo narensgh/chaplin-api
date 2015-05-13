@@ -39,7 +39,7 @@ class PmController extends AbstractActionController {
     public function todosAction() {
         return new ViewModel();
     }
-    public function todoAction() {
+    public function discussionAction() {
         return new ViewModel();
     }
 

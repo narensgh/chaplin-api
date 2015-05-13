@@ -2,6 +2,7 @@
 
 var $ = require('jquery'),
     _ = require('underscore'),
+    Chaplin = require('chaplin'),
     View = require('../chaplin_view'),
     AddTodoView = require('./add_todo_view'),
     template = require('../../templates/pm/todo.hbs'),
@@ -17,6 +18,14 @@ var TodoView = View.extend({
     initialize: function() {
         View.prototype.initialize.call(this);
         this.listenTo(this.model, 'change', this.render);
+    },
+    getTemplateData: function() {
+        var data = View.prototype.getTemplateData.call(this),
+            url = Chaplin.utils.reverse('discussion', {todoId: data.todoId});
+        data = _.extend(data, {
+            url: url
+        });
+        return data;
     },
     deleteTodo: function() {
         var flag = confirm('Are you sure to delete this todo?');

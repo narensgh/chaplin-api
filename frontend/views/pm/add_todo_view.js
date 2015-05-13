@@ -25,8 +25,9 @@ var AddTodoView = View.extend({
     template: template,
     events: {
         'click .addtodo': 'addNewTodo',
+        'click .saveEditTodo': 'updateTodo',
         'click .cancelTodoAddForm': 'addTodoButton',
-        'click .saveEditTodo': 'updateTodo'
+        'click .cancelTodoEditForm': 'cancelEditTodo'
     },
     initialize: function(options) {
         View.prototype.initialize.call(this);
