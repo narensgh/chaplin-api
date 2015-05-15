@@ -18,7 +18,7 @@ var DiscussionCollection = Collection.extend({
         return Collection.prototype.fetch.call(this, options);
     },
     parse: function(resp) {
-        return resp;
+        return resp.discussions;
     }
 });
 module.exports = DiscussionCollection;

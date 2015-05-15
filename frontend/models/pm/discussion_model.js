@@ -3,7 +3,10 @@
 var Model = require('../chaplin_model'),
     DiscussionModel = Model.extend({
         defaults: {
-            todoId: ''
+            todoId: '',
+            content: '',
+            addedBy: ''
         }
     });
 module.exports = DiscussionModel;
+

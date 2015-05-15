@@ -3,6 +3,7 @@
 var Chaplin = require('chaplin'),
     ProjectCollection = require('../collections/pm/project_collection'),
     TodolistCollection = require('../collections/pm/todolist_collection'),
+    TodoCollection = require('../collections/pm/todo_collection'),
     DiscussionCollection = require('../collections/pm/discussion_collection'),
     SiteView = require('../views/site_view'),
     ModuleHeaderView = require('../views/pm/module_header_view'),
@@ -14,9 +15,8 @@ var PmController = Chaplin.Controller.extend({
     initialize: function(params) {
         Chaplin.Controller.prototype.initialize.call(this);
         this.projectCollection = new ProjectCollection();
-        this.discussionCollection = new DiscussionCollection(null, params);
-        this.todoCollection = new TodolistCollection(null, params);
-        this.listenTo(this.todoCollection, 'add', this.fetchTodo);
+        this.todoListCollection = new TodolistCollection(null, params);
+        this.listenTo(this.todoListCollection, 'add', this.fetchTodo);
     },
     beforeAction: function(params, route, options) {
         Chaplin.Controller.prototype.beforeAction.call(this);
@@ -36,16 +36,20 @@ var PmController = Chaplin.Controller.extend({
     },
     // launch todo list
     todos: function(params, route, options) {
-        this.todoCollection.fetch();
+        this.todoListCollection.fetch();
         this.reuse('todolistsView', TodolistsView, {
-            collection: this.todoCollection
+            collection: this.todoListCollection
         });
     },
     // launch todo discussion
     discussion: function(params, route, options) {
-//        this.discussionCollection.fetch();
+        this.todoCollection = new TodoCollection(null, params);
+        this.todoCollection.fetch();
+        this.discussionCollection = new DiscussionCollection(null, params);
+        this.discussionCollection.fetch();
         this.reuse('discussionsView', DiscussionsView, {
-            collection: this.discussionCollection
+            collection: this.discussionCollection,
+            todo: this.todoCollection
         });
     },
     fetchTodo: function(model, collection, options) {
