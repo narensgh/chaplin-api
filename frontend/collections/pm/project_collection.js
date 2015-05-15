@@ -18,7 +18,7 @@ var ProjectCollection = Collection.extend({
         return Collection.prototype.fetch.call(this, options);
     },
     parse: function(resp) {
-        return resp;
+        return resp.projects;
     }
 });
 module.exports = ProjectCollection;

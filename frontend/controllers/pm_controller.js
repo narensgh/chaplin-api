@@ -4,6 +4,7 @@ var Chaplin = require('chaplin'),
     ProjectCollection = require('../collections/pm/project_collection'),
     TodolistCollection = require('../collections/pm/todolist_collection'),
     TodoCollection = require('../collections/pm/todo_collection'),
+    ProjectModel = require('../models/pm/project_model'),
     DiscussionCollection = require('../collections/pm/discussion_collection'),
     SiteView = require('../views/site_view'),
     ModuleHeaderView = require('../views/pm/module_header_view'),
@@ -14,21 +15,19 @@ var Chaplin = require('chaplin'),
 var PmController = Chaplin.Controller.extend({
     initialize: function(params) {
         Chaplin.Controller.prototype.initialize.call(this);
-        this.projectCollection = new ProjectCollection();
         this.todoListCollection = new TodolistCollection(null, params);
+        this.projectModel = new ProjectModel({projectId: 1});
         this.listenTo(this.todoListCollection, 'add', this.fetchTodo);
+        this.listenTo(this.projectModel, 'sync', this.renderProjectInfo);
     },
     beforeAction: function(params, route, options) {
         Chaplin.Controller.prototype.beforeAction.call(this);
         this.reuse('siteView', SiteView);
-        this.reuse('moduleHeaderView', ModuleHeaderView, {
-            moduleName: 'Project Management',
-            collection: this.projectCollection
-        });
     },
     // launch app by displaying projects
     index: function(params, route, options) {
         params.peopleId = 1;
+        this.projectCollection = new ProjectCollection();
         this.projectCollection.fetch(params);
         this.reuse('projectsView', ProjectsView, {
             collection: this.projectCollection
@@ -36,6 +35,7 @@ var PmController = Chaplin.Controller.extend({
     },
     // launch todo list
     todos: function(params, route, options) {
+        this.projectModel.fetch();
         this.todoListCollection.fetch();
         this.reuse('todolistsView', TodolistsView, {
             collection: this.todoListCollection
@@ -43,6 +43,7 @@ var PmController = Chaplin.Controller.extend({
     },
     // launch todo discussion
     discussion: function(params, route, options) {
+        this.projectModel.fetch();
         this.todoCollection = new TodoCollection(null, params);
         this.todoCollection.fetch();
         this.discussionCollection = new DiscussionCollection(null, params);
@@ -64,7 +65,8 @@ var PmController = Chaplin.Controller.extend({
     },
     renderProjectInfo: function() {
         this.reuse('moduleHeaderView', ModuleHeaderView, {
-            collection: this.projectCollection
+            moduleName: 'Project Management',
+            model: this.projectModel
         });
     }
 });
