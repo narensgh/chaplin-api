@@ -13,10 +13,15 @@ var Chaplin = require('chaplin'),
     DiscussionsView = require('../views/pm/discussions_view');
 
 var PmController = Chaplin.Controller.extend({
-    initialize: function(params) {
+    initialize: function(params, route, options) {
         Chaplin.Controller.prototype.initialize.call(this);
+        if (options.query.projectId) {
+            this.projectId = options.query.projectId;
+        } else if (params.projectId) {
+            this.projectId = params.projectId;
+        }
         this.todoListCollection = new TodolistCollection(null, params);
-        this.projectModel = new ProjectModel({projectId: 1});
+        this.projectModel = new ProjectModel({projectId: this.projectId});
         this.listenTo(this.todoListCollection, 'add', this.fetchTodo);
         this.listenTo(this.projectModel, 'sync', this.renderProjectInfo);
     },
@@ -38,7 +43,7 @@ var PmController = Chaplin.Controller.extend({
         this.projectModel.fetch();
         this.todoListCollection.fetch();
         this.reuse('todolistsView', TodolistsView, {
-            collection: this.todoListCollection
+            collection: this.todoListCollection,
         });
     },
     // launch todo discussion
