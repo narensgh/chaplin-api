@@ -2,6 +2,7 @@
 
 var $ = require('jquery'),
     _ = require('underscore'),
+    ui = require('../../libs/ui/jquery-ui'),
     View = require('../chaplin_view'),
     TodoModel = require('../../models/pm/todo_model'),
     template = require('../../templates/pm/todo_form.hbs'),
@@ -18,6 +19,7 @@ var $ = require('jquery'),
 var els = {
     addtodo: '#addtodo-',
     tododescription: '#tododescription-',
+    tododuedate: '#tododuedate-',
     todoContainer: '.todo-new'
 };
 
@@ -27,7 +29,8 @@ var AddTodoView = View.extend({
         'click .addtodo': 'addNewTodo',
         'click .saveEditTodo': 'updateTodo',
         'click .cancelTodoAddForm': 'addTodoButton',
-        'click .cancelTodoEditForm': 'cancelEditTodo'
+        'click .cancelTodoEditForm': 'cancelEditTodo',
+        'click .tododuedate': 'openDatepicker'
     },
     initialize: function(options) {
         View.prototype.initialize.call(this);
@@ -67,16 +70,20 @@ var AddTodoView = View.extend({
     },
     addNewTodo: function() {
         var description = this.$(els.tododescription + this.todoListId).val(),
+             tododuedate = this.$(els.tododuedate + this.todoListId).val(),
             todo = new TodoModel({
                 description: description,
+                dueOn: tododuedate,
                 todoListId: this.todoListId
             });
         this.saveTodo(todo);
     },
     updateTodo: function() {
-        var description = this.$(els.tododescription + this.todoListId).val();
+        var description = this.$(els.tododescription + this.todoListId).val(),
+            tododuedate = this.$(els.tododuedate + this.todoListId).val();
         this.model.set({
-            description: description
+            description: description,
+            dueOn: tododuedate
         });
         this.model.save();
         this.cancelEditTodo();
@@ -105,6 +112,12 @@ var AddTodoView = View.extend({
         var todoFormContainer = $(els.addtodo + this.todoListId);
         todoFormContainer.html("<span class=\"add-todo-button\" id=\"addTodoButton-" + this.todoListId + "\">Add a to-do</span>");
         this.undelegateEvents();
+    },
+    openDatepicker: function(e) {
+        this.$(e.target).datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+        this.$(e.target).datepicker('show');
     }
 });
 module.exports = AddTodoView;

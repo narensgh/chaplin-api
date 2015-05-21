@@ -7,6 +7,7 @@ var TodoModel = Backbone.RelationalModel.extend({
     defaults: {
         todoListId: '',
         description: '',
+        dueOn: '',
         active: true,
         assignedTo: '1'
     },

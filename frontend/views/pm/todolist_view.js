@@ -71,7 +71,7 @@ var TodoView = View.extend({
         new AddTodoView({
             collection: this.model.get('todos'),
             el: this.$(container),
-            todolistId: this.model.get('todoListId')
+            todoListId: this.model.get('todoListId')
         });
     }
 });
